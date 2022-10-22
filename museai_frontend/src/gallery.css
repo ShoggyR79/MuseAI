@@ -95,7 +95,7 @@
 
 .modal.open.box::before{
     content: '';
-    background: conic-gradient(blue 40deg, transparent 100deg);
+    background: conic-gradient(white 75deg, transparent 100deg);
     height: 150%;
     width: 150%;
     position: absolute;
