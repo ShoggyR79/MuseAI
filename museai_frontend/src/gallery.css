@@ -64,19 +64,19 @@
 }
 
 .modal img{
-    width: auto;
+    width: 512px;
     max-width: 100%;
-    height: auto;
-    max-height: 80%;
+    height: 512px;
+    max-height: 100%;
     display: block;
     line-height: 0;
     box-sizing: border-box;
-    padding: 20px 0 20px;
+    padding: 0px 0 0px;
     margin: 0 auto;
     opacity: 1;
 }
 
-.modal.open svg{
+.modal.open svg.exit{
     position: fixed;
     top: 10px;
     right: 10px;
@@ -88,6 +88,19 @@
     cursor: pointer;
 }
 
-/* .modal.open p{
+.modal.open h2{
+    opacity: 1;
+    color: #ffffff;
+}
 
-} */
+.modal.open h4{
+    opacity: 1;
+    color: #ffffff;
+}
+
+.modal.open h5{
+    opacity: 1;
+    color: #ffffff;
+}
+
+.top-buffer { margin-top:20px; }
