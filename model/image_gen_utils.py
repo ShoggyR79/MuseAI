@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../authenticators')
+
 
 import torch
 from torch import autocast
@@ -17,12 +17,12 @@ def gen_image(file_name : str, prompt : str, height : int = 512, width : int = 5
     with autocast("cuda"): 
         generated_image = pipeline(prompt, height = height, width = width, num_inference_steps = num_inference_steps)
         
-    if generated_image['nsfw_content_detected'][0] : 
-        return False
-    
     image = generated_image['sample'][0]
-    image.save(file_name + '.png')
+    name = '../' + file_name + '.png'
+    image.save(name)
+    if generated_image['nsfw_content_detected'][0] : 
+        return name, False
     
-    return True 
+    return name, True 
 
 

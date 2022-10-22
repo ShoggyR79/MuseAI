@@ -1,5 +1,4 @@
 import sys
-sys.path.append('../authenticators')
 
 import numpy as np  
 from sentence_transformers import SentenceTransformer 
@@ -83,16 +82,14 @@ def get_track_by_tags(tags, patterns, duration, max_iterations=20, autoplay=Fals
             return trackurl
         time.sleep(1)
 
-def gen_music(file_name : str, prompt : str, duration : float, k_nearest : int = 5, loop : bool = False, maxit : int = 20):
+def gen_music(file_name : str, prompt : str, duration : float = 15, k_nearest : int = 5, loop : bool = False, maxit : int = 20):
     patterns = authenticate_music_api()
     x, tags = _get_tags_from_prompt(prompt = [prompt,], k_nearest = k_nearest)[0]
     audio_url = get_track_by_tags(tags, patterns, duration, maxit, loop=loop)
     audio_data = requests.get(audio_url)
-    saved_file_name = file_name + '.mp3'
-    with open(saved_file_name, 'wb') as f:
+    name = '../' + file_name + '.mp3'
+    with open(name, 'wb') as f:
         f.write(audio_data.content)
-    return;
-
-
+    return name
     
     
