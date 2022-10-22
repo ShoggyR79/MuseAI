@@ -4,7 +4,14 @@ import CloseIcon from '@material-ui/icons/Close'
 import {FcLike} from "react-icons/fc";
 import { TfiHeart } from "react-icons/tfi";
 import {AiFillEye, AiOutlineComment} from "react-icons/ai";
+import ReactAudioPlayer from 'react-audio-player';
 
+import Audio1 from '../assets/alarm.mp3'
+import Audio2 from '../assets/bday.mp3'
+import Audio3 from '../assets/castle.mp3'
+import Audio4 from '../assets/city.mp3'
+import Audio5 from '../assets/organ.mp3'
+import Audio6 from '../assets/wolf.mp3'
 
 import Img1 from '../assets/alarm.png'
 import Img2 from '../assets/bday.png'
@@ -17,93 +24,99 @@ const Gallery = () => {
     let data = [
         {
             img: Img1,
-            audio: '',
+            audio: Audio1,
             user: 'user1',
             prompt: 'An annoying alarm ringing for 30 minutes with mosquitos flying nearby',
-            caption: 'A clock',
+            caption: 'An annoying clock',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         },
         {
             img: Img2,
-            audio: '',
+            audio: Audio2,
             user: 'user2',
             prompt: 'Birthday in 2050',
             caption: 'A birthday party',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s lit!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         },
         {
             img: Img3,
-            audio: '',
+            audio: Audio3,
             user: 'user3',
             prompt: 'fantasy land, huge stone castles, covered in clouds, surrounded by mountains, rainy weather, steam punk',
             caption: 'A castle',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s lit!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         },
         {
             img: Img4,
-            audio: '',
+            audio: Audio4,
             user: 'user4',
             prompt: 'A magical town with tall crooked buildings, deformed tall buildings, slanted tall buildings, inspired by amsterdam and victorian england, night time, digital painting, highly detailed, concept art, game art, matte painting, trending on artstation, octane render, 8 k, unreal engine',
             caption: 'A city',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s lit!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         },
         {
             img: Img5,
-            audio: '',
+            audio: Audio5,
             user: 'user5',
             prompt: 'Old expensive organ playing itself in a Ancient Satan Church',
             caption: 'An organ',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s lit!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         },
         {
             img: Img6,
-            audio: '',
+            audio: Audio6,
             user: 'user6',
             prompt: 'Dark wolf mage, spell, fog, potion, magic the gathering artwork, d&d, fantasy, cinematic lighting, centered, symmetrical, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, volumetric lighting, epic composition, 8k, art by akihiko yoshida and greg rutkowski and craig mullins, oil painting, cgsociety',
             caption: 'A wolf',
             likes: 10,
             views: 10,
-            comments: ['1'],
-            commentsLen: 1
+            comments: [{'user':'user1','text':'That\'s lit!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'},{'user':'user1','text':'That\'s good!'},{'user':'user2','text':'Amazing'},{'user':'user3','text':'So bad! Boo'}],
+            commentsLen: 3
         }
     ]
 
     const [modal, setModal] = useState(false)
-    const [itemModal, setItemModal] = useState('')
+    const [itemModal, setItemModal] = useState(data[0])
     const [like, setLike] = useState(false)
+    const [isPlay, setIsPlay] = useState(false)
+
 
     const getImg = (item) => {
         setItemModal(item)
         setModal(true)
     }
 
-
     return (
         <div>
+            
             <div className={modal ? 'modal open' : 'modal'}>
-                <CloseIcon className='exit' onClick={()=>setModal(false)}/>
+                <CloseIcon className='exit' onClick={()=>{setModal(false);setIsPlay(false)}}/>
+
+                
+
+
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-2'>
 
                         </div>
                         <div className='col-sm-5 text-center'>
-                            <h2>{itemModal.caption}</h2>
+                            <h2 style={{position: 'absolute',width:'50%',top:'15%',left:'13%',textAlign:'center'}}>{itemModal.caption}</h2>
                         </div>
 
                         <div className='col-sm-5 text-center'>
@@ -122,15 +135,31 @@ const Gallery = () => {
                         
                     </div>
 
-                    <div className='row'>
-                        <div className='col-sm-2'>
+                <div className='row'>
+                    <div className='col-sm-2'>
+                    </div>
+
+                        <div className='col-sm-5 justify-content-start'>
+                            <div className='row'>
+                                <div className={isPlay ? 'modal open box' : ''}>
+
+                                </div>
+
+                                <img src={itemModal.img}/>
+                                
+                            </div>
+                            
+
+                            <div className='row'>
+                                {modal ? <ReactAudioPlayer style={{position: 'absolute',width: '25%',bottom:'10%',left:'25.5%'}} src={itemModal.audio} autoplay controls onPlay={()=>setIsPlay(true)} onPause={()=>setIsPlay(false)}/> : <div></div>}
+                            </div>
 
                         </div>
-                        <div className='col-sm-5 justify-content-start'>
-                            
-                            <img src={itemModal.img}/>
-                            
-                        </div>
+
+                        
+
+                        
+                        
 
                         <div className='col-sm-5 justify-content-center'>
                             
@@ -163,6 +192,16 @@ const Gallery = () => {
                                 <div className='col-sm-4 justify-content-start'>
                                     <h5>{`${itemModal.commentsLen} comments`}</h5>
                                 </div>
+                            </div>
+
+                            <div className='row top-buffer' style={{height: '33%',overflowY: 'scroll'}}>
+                                {itemModal.comments.map((item, index)=>{
+                                    return (
+                                        <div className='row'>
+                                            <h5>{`${item.user}: ${item.text}`}</h5>
+                                        </div>
+                                    )
+                                })}
                             </div>
                             
 
