@@ -1,6 +1,4 @@
 import sys
-
-
 import torch
 from torch import autocast
 from diffusers import StableDiffusionPipeline
