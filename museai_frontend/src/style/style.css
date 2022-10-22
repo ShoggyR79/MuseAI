@@ -1,0 +1,32 @@
+.primary_bg{
+    background-color: #27272A;
+}
+.secondary_bg{
+    background-color: #3F3F46;
+}
+.third_bg{
+    background-color: #B0B2B8;
+}
+.fourth_bg{
+    background-color: #CFD6EA;
+}
+.five_bg{
+    background-color: #0C8346;
+}
+
+.primary_font{
+    color: #27272A;
+}
+.secondary_font{
+    color: #3F3F46;
+}
+.third_font{
+    color: #B0B2B8;
+}
+.fourth_font{
+    color: #CFD6EA;
+}
+.five_font{
+    color: #0C8346;
+}
+

@@ -1,14 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 
+
 import Gallery from './components/Gallery'
+import UploadForm from './components/UploadForm';
+import Title from './components/Title';
+import "./style/style.css"
+
 
 function App() {
   return (
-    <div>
-      <h1 style={{textAlign:'center'}}>MuseAI</h1>
-      <Gallery/>
+    <div className='primary_bg'>
+      <div className='container'>
+        <Title />
+        <UploadForm />
+        <Gallery />
+      </div>
     </div>
+
   );
 }
 
