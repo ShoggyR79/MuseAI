@@ -11,22 +11,27 @@ import Navbar from './components/Navbar';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
   return (
     <div className='primary_bg'>
-      
-      <BrowserRouter>
-      <Routes>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Routes>
 
-          {/* <Route index element={<Home />} /> */}
-          <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+            {/* <Route index element={<Home />} /> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
 
-      </Routes>
-    </BrowserRouter>
-      
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+
+          </Routes>
+        </BrowserRouter>
+      </AuthContextProvider>
+
+
     </div>
 
   );

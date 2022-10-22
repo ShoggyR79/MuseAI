@@ -1,13 +1,15 @@
-import react from 'react';
+import react, { useEffect } from 'react';
+import { UserAuth } from '../context/AuthContext';
 import "../style/style.css"
 
 const UploadForm = () => {
     const submitHandler = () => {
 
     }
-    return (
-        <div className=" row d-flex justify-content-center mb-5">
-            <form className="col-5 form ">
+    const { user } = UserAuth()
+    const renderForm = () => {
+        if (user != null) {
+            return (<form className="col-5 form ">
                 <div className="form-group text-center">
                     <div>
                         <textarea className="form-control mt-3" id="PromptTextArea" rows={5} defaultValue={""} placeholder="Enter a description for the image and/or music you want to be generated" />
@@ -19,7 +21,19 @@ const UploadForm = () => {
 
                 </div>
 
-            </form>
+            </form>)
+
+        } else {
+            return (
+                <h4 className='col-5 text-danger text-center'>Log in to start generating!</h4>
+            )
+        }
+    }
+
+
+    return (
+        <div className=" row d-flex justify-content-center mb-5">
+            {renderForm()}
 
         </div>
 
