@@ -4,7 +4,7 @@ sys.path.append('../authenticators')
 import numpy as np  
 from sentence_transformers import SentenceTransformer 
 import httpx
-from config_utils import authenticate_models
+from config_utils import authenticate_music_api
 import tqdm
 import requests
 import json
@@ -59,7 +59,7 @@ def _select_mode(mode : bool):
         return "track"
 
 
-def get_track_by_tags(tags, patterns, duration, maxit=20, autoplay=False, loop=False):
+def get_track_by_tags(tags, patterns, duration, max_iterations=20, autoplay=False, loop=False):
     mode = _select_mode(loop)
     
     request = httpx.post('https://api-b2b.mubert.com/v2/RecordTrackTTM', 
@@ -77,20 +77,22 @@ def get_track_by_tags(tags, patterns, duration, maxit=20, autoplay=False, loop=F
     assert requested_data['status'] == 1, requested_data['error']['text']
     trackurl = requested_data['data']['tasks'][0]['download_link']
 
-    for i in tqdm(range(maxit)):
+    for i in tqdm.tqdm(range(max_iterations)):
         request = httpx.get(trackurl)
         if request.status_code == 200:
             return trackurl
         time.sleep(1)
 
-def gen_music_track_prompt(file_name : str, prompt : str,duration : float, k_nearest : int = 5, loop : bool = False, maxit : int = 20):
-    patterns = authenticate_models()
+def gen_music(file_name : str, prompt : str, duration : float, k_nearest : int = 5, loop : bool = False, maxit : int = 20):
+    patterns = authenticate_music_api()
     x, tags = _get_tags_from_prompt(prompt = [prompt,], k_nearest = k_nearest)[0]
     audio_url = get_track_by_tags(tags, patterns, duration, maxit, loop=loop)
     audio_data = requests.get(audio_url)
     saved_file_name = file_name + '.mp3'
     with open(saved_file_name, 'wb') as f:
         f.write(audio_data.content)
+    return;
+
 
     
     
