@@ -13,7 +13,6 @@ export default function Navbar() {
             <div className="container">
                 <form className="d-flex justify-content-left">
                     <a className="navbar-brand text-light" style={{cursor: 'pointer'}} onClick={()=>navigate('/')}>MuseAI</a>
-
                     <input className="form-control me-2 bg-secondary" type="search" placeholder="Search" aria-label="Search" />
                     <button className="btn btn-secondary" type="submit">Search</button>
                 </form>
