@@ -1,40 +1,10 @@
 import React from 'react'
 
-import Img from './assets/alarm.png'
+import Img from '../assets/alarm.png'
 const Gallery = () => {
     let data = [
         {
             img: Img,
-            audio: '',
-            user: '',
-            prompt: ''
-        },
-        {
-            img: './assets/bday.png',
-            audio: '',
-            user: '',
-            prompt: ''
-        },
-        {
-            img: './assets/castle.png',
-            audio: '',
-            user: '',
-            prompt: ''
-        },
-        {
-            img: './assets/city.png',
-            audio: '',
-            user: '',
-            prompt: ''
-        },
-        {
-            img: './assets/organ.png',
-            audio: '',
-            user: '',
-            prompt: ''
-        },
-        {
-            img: './assets/wolf.png',
             audio: '',
             user: '',
             prompt: ''
