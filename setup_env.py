@@ -28,19 +28,18 @@ def main(args):
 if __name__ == '__main__':
     # List of processes, add your commands here for dependencies.
     all_process = [
-        ['pip', 'install', 'torch==1.12.1+cu113', 'torchvision==0.13.1+cu113', '--extra-index-url', 
-                'https://download.pytorch.org/whl/cu113'],
-        ['pip', 'install', '-U', 'sentence-transformers'],
-        ['pip', 'install', 'httpx'],
-        ['pip', 'install', 'numpy'],
-        ['pip', 'install', 'matplotlib'],
-        ['pip', 'install', 'sklearn'],
-        ['pip', 'install', 'diffusers==0.2.4'],
-        ['pip', 'install', 'Flask'],
-        ['pip', 'install', 'transformers'],
-        ['pip', 'install', 'scipy'],
-        ['pip', 'install', 'huggingface_hub'],
-        ['pip', 'install', 'tqdm']
+        ['pip3', 'install', 'torch', 'torchvision', 'torchaudio'],
+        ['pip3', 'install', '-U', 'sentence-transformers'],
+        ['pip3', 'install', 'httpx'],
+        ['pip3', 'install', 'numpy'],
+        ['pip3', 'install', 'matplotlib'],
+        ['pip3', 'install', 'sklearn'],
+        ['pip3', 'install', 'diffusers==0.2.4'],
+        ['pip3', 'install', 'Flask'],
+        ['pip3', 'install', 'transformers'],
+        ['pip3', 'install', 'scipy'],
+        ['pip3', 'install', 'huggingface_hub'],
+        ['pip3', 'install', 'tqdm']
     ]
     
     args = {}

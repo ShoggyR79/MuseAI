@@ -1,11 +1,6 @@
 from dataclasses import dataclass
 from flask import Flask, render_template, request, jsonify 
 
-
-def generate(p, i, m, u):
-    a = {"status": "true", "link":u}
-    return a
-
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET', 'POST'])
@@ -27,16 +22,4 @@ def parse_data():
 if __name__ == "__main__":
     app.run(debug = True)
 
-
-
-
-
-# front end --- send me dictionary (json)
-# i g'get' from front end (methods = 'get', 'post')
-
-# use a function to  process the data
-
-# data = request.json
-# process data and send to model    2 strings, 2 lists 
-# return jsonify(data) ---- send data back to frontend --- send id
 
