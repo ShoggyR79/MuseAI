@@ -77,3 +77,33 @@ def generate(pipeline, db, storage, pattern, prompt : str, image_tags, music_tag
         'id' : ref.id,
         'nsfw' : False,
     }
+    
+    
+def generate2(pipeline, db, storage, pattern, prompt : str, image_tags, music_tags, user_id : str, height : int, width : int, duration : float):
+    prompt = get_prompt(prompt)
+    file_name = user_id + str(np.random.randint(0, np.power(2, 32)))
+    image_prompt, music_prompt = _parse_args(prompt, image_tags, music_tags)
+    generated_image_name, nsfw = gen_image(pipeline, file_name, image_prompt, height, width)
+    generated_audio_name = gen_music(pattern, file_name, music_prompt, duration)
+    
+    if not nsfw : 
+        return {
+            'id' : "JUNK",
+            'nsfw' : True,
+        }
+
+    storage.child(generated_image_name).put(generated_image_name)
+    storage.child(generated_audio_name).put(generated_audio_name)
+    
+    media = {
+        u'img_id' : generated_image_name,
+        u'audio_id' : generated_audio_name,
+        u'prompt' : prompt 
+    }
+    os.remove(generated_image_name)
+    os.remove(generated_audio_name)
+    times, ref = db.collection(u'media').add(media)
+    return {
+        'id' : ref.id,
+        'nsfw' : False,
+    }
