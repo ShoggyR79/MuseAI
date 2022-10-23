@@ -11,7 +11,7 @@ import Select from 'react-select';
 import axios from 'axios'
 import { projectFirestore } from '../firebase/config';
 import { initializeApp } from "firebase/app";
-import {  getFirestore,collection, getDocs, addDoc, deleteDoc, doc, query, where  } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 
 const UploadForm = () => {
 
@@ -80,15 +80,31 @@ const UploadForm = () => {
             views:Math.floor(Math.random() * (200 - 0 + 1)) + 0,
             prompt,
             caption,
-            media:data.id
+            media: data.id
         }
-        addDoc(postRef, post).then((res)=>{
+        addDoc(postRef, post).then((res) => {
             console.log(res)
-        }).catch((error)=>{
+            window.location.reload(false);
+
+        }).catch((error) => {
             console.log(error)
         })
 
     }
+
+
+    // const renderImgUpload = () => {
+    //     if (user != null) {
+    //         return (<form className="col-5 form ">
+    //             <input type="file" onChange={changeHandler} />
+    //         </form>)
+
+    //     } else {
+    //         return (
+    //             <h4 className='col-5 text-danger text-center'>Log in to start generating!</h4>
+    //         )
+    //     }
+    // }
     const renderForm = () => {
         if (user != null) {
             return (<form className="col-5 form ">
