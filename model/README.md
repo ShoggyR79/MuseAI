@@ -1,0 +1,2 @@
+## Instructions on Running : 
+Please run the python3 setup_env.py file in the main repo first to set up all the dependencies. Requires a GPU with CUDA enabled. Preferrably 11+GB VRAM. Otherwise will be slow and might not work. After setting up environment simply do python3 deploy.py for running the backend.
