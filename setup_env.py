@@ -41,7 +41,7 @@ if __name__ == '__main__':
         ['pip', 'install', 'scipy'],
         ['pip', 'install', 'huggingface_hub'],
         ['pip', 'install', 'tqdm'],
-        ['pip', 'install', '--upgrade', 'firebase-admin']
+        ['pip', 'install', '--upgrade', 'firebase-admin'],
         ['pip', 'install', '-U', 'deep-translator']
     ]
     
