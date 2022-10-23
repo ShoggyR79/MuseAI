@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import Profile from './Pages/Profile';
 import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             {/* <Route index element={<Home />} /> */}
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-
+            <Route path="/profile/:username" element={<Profile/>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 

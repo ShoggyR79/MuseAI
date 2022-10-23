@@ -103,7 +103,7 @@
 }
 
 .modal.open.box::after{
-    content: 'Border Animation';
+    content: '';
     color: #ffffff;
     font-size: 1.5rem;
     letter-spacing: 4px;

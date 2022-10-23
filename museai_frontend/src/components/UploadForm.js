@@ -19,12 +19,6 @@ const UploadForm = () => {
     const [imgTags, setImgTags] = useState([])
     const [musTags, setMusTags] = useState([])
 
-    console.log(height)
-    console.log(width)
-    console.log(duration)
-    console.log(imgTags)
-    console.log(musTags)
-
     const musicTags = ['neo-classic', 'funk', 'jazz', 'mystical', 'horror', 'idm', 'holidays', 'pop', 'hiphop', 'urban', 'fantasy', 'chill', 'dance', 'heavy bassline', 'melodic', 'nature', 'joyful', 'sorrow', 'futuristic', 'calm'].map(
         item => ({ label: item, value: item })
     );
