@@ -5,7 +5,7 @@ import { UserAuth } from '../context/AuthContext';
 import "../style/style.css"
 import { Slider } from '@mui/material';
 import { FiSettings } from "react-icons/fi"
-import {GiSettingsKnobs} from "react-icons/gi"
+import { GiSettingsKnobs } from "react-icons/gi"
 import { TagPicker } from 'rsuite';
 import Select from 'react-select';
 
@@ -35,7 +35,7 @@ const UploadForm = () => {
 
 
     const submitHandler = () => {
-
+        
     }
     const { user } = UserAuth()
     const renderForm = () => {
@@ -50,12 +50,12 @@ const UploadForm = () => {
                     </div>
                     <button type="submit" style={{ textAlign: "center", backgroundColor: "#191C76", color: "E3DFFF" }} class="btn btn-primary btn-lg col-12 mt-3">Submit</button>
                     {isSettings ?
-                        <FiSettings size={30} style={{ color: 'white', marginTop: '10px', cursor: 'pointer',transition: 'all 350ms ease'}} onClick={() => setIsSettings(!isSettings)} />
-                    :
-                        <FiSettings size={30} style={{ color: 'white', marginTop: '10px', cursor: 'pointer',transition: 'all 350ms ease',transform: 'rotate(180deg)'}} onClick={() => setIsSettings(!isSettings)}/>
-                
+                        <FiSettings size={30} style={{ color: 'white', marginTop: '10px', cursor: 'pointer', transition: 'all 350ms ease' }} onClick={() => setIsSettings(!isSettings)} />
+                        :
+                        <FiSettings size={30} style={{ color: 'white', marginTop: '10px', cursor: 'pointer', transition: 'all 350ms ease', transform: 'rotate(180deg)' }} onClick={() => setIsSettings(!isSettings)} />
+
                     }
-                    
+
                 </div>
 
             </form>)
@@ -74,18 +74,18 @@ const UploadForm = () => {
 
             {isSettings ?
                 <div style={{ transition: 'all 500ms ease' }}>
-                    <div className='row top-buffer' style={{ transition: 'all 500ms ease',transform: 'rotate(360deg)' }}>
+                    <div className='row top-buffer' style={{ transition: 'all 500ms ease', transform: 'rotate(360deg)' }}>
                         <div className='col-sm-3'>
 
                         </div>
                         <div className='col-sm-3 justify-content-center text-center'>
                             <h5 style={{ color: 'white' }}>Height</h5>
-                            <Slider defaultValue={512} valueLabelDisplay="auto" step={16} marks min={64} max={1024} size={'small'} onChange={(event)=>setHeight(event.target.value)}/>
+                            <Slider defaultValue={512} valueLabelDisplay="auto" step={16} marks min={64} max={1024} size={'small'} onChange={(event) => setHeight(event.target.value)} />
                         </div>
 
                         <div className='col-sm-3 justify-content-center text-center'>
                             <h5 style={{ color: 'white' }}>Width</h5>
-                            <Slider defaultValue={512} valueLabelDisplay="auto" step={16} marks min={64} max={1024} size={'small'} onChange={(event)=>setWidth(event.target.value)}/>
+                            <Slider defaultValue={512} valueLabelDisplay="auto" step={16} marks min={64} max={1024} size={'small'} onChange={(event) => setWidth(event.target.value)} />
                         </div>
 
                     </div>
@@ -103,7 +103,7 @@ const UploadForm = () => {
                                     // onChange={this.handleChange}
                                     options={imageTags}
                                     isMulti={true}
-                                    onChange={(selectedOption)=>setImgTags(selectedOption)}
+                                    onChange={(selectedOption) => setImgTags(selectedOption)}
                                 />
                             </div>
 
@@ -119,7 +119,7 @@ const UploadForm = () => {
                                     // onChange={this.handleChange}
                                     options={musicTags}
                                     isMulti={true}
-                                    onChange={(selectedOption)=>setMusTags(selectedOption)}
+                                    onChange={(selectedOption) => setMusTags(selectedOption)}
                                 />
                             </div>
 
@@ -134,7 +134,7 @@ const UploadForm = () => {
                                 <h5 style={{ color: 'white' }}>Duration</h5>
                             </div>
                             <div className='row'>
-                                <Slider defaultValue={15} valueLabelDisplay="auto" step={5} marks min={5} max={60} size={'small'} onChange={(event)=>setDuration(event.target.value)}/>
+                                <Slider defaultValue={15} valueLabelDisplay="auto" step={5} marks min={5} max={60} size={'small'} onChange={(event) => setDuration(event.target.value)} />
                             </div>
 
                         </div>
