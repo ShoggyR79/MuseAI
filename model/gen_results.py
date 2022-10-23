@@ -27,15 +27,15 @@ def _parse_args(prompt, image_tags, music_tags):
 def initialize_firebase() : 
     # Use a service account.
     config = {
-    "apiKey": "AIzaSyAbQIzCBIKM9UH2xwH-uOYITjZppCAhrbE",
-    "authDomain": "museai-7da19.firebaseapp.com",
-    "projectId" : "museai-7da19",
-    "databaseURL" : "xxxx",
-    "storageBucket": "museai-7da19.appspot.com",
-    "messagingSenderId": "792426663423",
-    "appId": "1:792426663423:web:e2b1dcf08f7c2ef485ebca",
-    "measurementId": "G-4H57BJ3110"
-    }
+        "apiKey": "AIzaSyAbQIzCBIKM9UH2xwH-uOYITjZppCAhrbE",
+        "authDomain": "museai-7da19.firebaseapp.com",
+        "projectId" : "museai-7da19",
+        "databaseURL" : "xxxx",
+        "storageBucket": "museai-7da19.appspot.com",
+        "messagingSenderId": "792426663423",
+        "appId": "1:792426663423:web:e2b1dcf08f7c2ef485ebca",
+        "measurementId": "G-4H57BJ3110"
+        }
     firebase = pyrebase.initialize_app(config)
     cred = credentials.Certificate('./authentications/firebase_configs.json')
     app = firebase_admin.initialize_app(cred)
