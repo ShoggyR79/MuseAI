@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const Home = () => {
+    let data = []
     return (
         <div>
             <Navbar/>
@@ -12,7 +13,7 @@ const Home = () => {
             
                 <Title />
                 <UploadForm />
-                <Gallery />
+                <Gallery/>
             </div>
         </div>
         
