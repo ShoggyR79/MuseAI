@@ -84,6 +84,8 @@ const UploadForm = () => {
         }
         addDoc(postRef, post).then((res) => {
             console.log(res)
+            window.location.reload(false);
+
         }).catch((error) => {
             console.log(error)
         })
