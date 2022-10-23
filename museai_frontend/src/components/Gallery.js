@@ -51,14 +51,15 @@ const Gallery = () => {
             let newData = []
             querySnapshot.forEach(async (post) => {
                 let d = post.data()
-                console.log(d)
+                
 
                 const docRef = await doc(db, "media", d.media);
                 const mediaQuery = await getDoc(docRef);
+                console.log('query',mediaQuery.data())
                 // console.log(docRef)
 
-                let curImg = await getDownloadURL(ref(projectStorage, mediaQuery.data().img))
-                let curAudio = await getDownloadURL(ref(projectStorage, mediaQuery.data().audio))
+                let curImg = await getDownloadURL(ref(projectStorage, mediaQuery.data().img_id))
+                let curAudio = await getDownloadURL(ref(projectStorage, mediaQuery.data().audio_id))
 
                 newData.push({ ...d, img: curImg, audio: curAudio })
 
