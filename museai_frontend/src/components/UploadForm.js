@@ -9,8 +9,25 @@ import {GiSettingsKnobs} from "react-icons/gi"
 import { TagPicker } from 'rsuite';
 import Select from 'react-select';
 import axios from 'axios'
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { projectStorage } from "../firebase/config.js"
 
 const UploadForm = () => {
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAbQIzCBIKM9UH2xwH-uOYITjZppCAhrbE",
+        authDomain: "museai-7da19.firebaseapp.com",
+        projectId: "museai-7da19",
+        storageBucket: "museai-7da19.appspot.com",
+        messagingSenderId: "792426663423",
+        appId: "1:792426663423:web:e2b1dcf08f7c2ef485ebca",
+        measurementId: "G-4H57BJ3110"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
 
     const [isSettings, setIsSettings] = useState(false)
 
