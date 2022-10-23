@@ -1,0 +1,37 @@
+.primary_bg {
+  background-color: #363639;
+}
+.secondary_bg {
+  background-color: #cfd6ea;
+}
+.third_bg {
+  background-color: #b0b2b8;
+}
+.fourth_bg {
+  background-color: #191c76;
+}
+.five_bg {
+  background-color: #3e885b;
+}
+
+.primary_font {
+  color: #363639;
+}
+.secondary_font {
+  color: #cfd6ea;
+}
+.third_font {
+  color: #b0b2b8;
+}
+.fourth_font {
+  color: #191c76;
+}
+.five_font {
+  color: #3e885b;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b0b2b8;
+  opacity: 0.75; /* Firefox */
+}
