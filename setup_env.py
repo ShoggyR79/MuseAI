@@ -40,7 +40,8 @@ if __name__ == '__main__':
         ['pip', 'install', 'transformers'],
         ['pip', 'install', 'scipy'],
         ['pip', 'install', 'huggingface_hub'],
-        ['pip', 'install', 'tqdm']
+        ['pip', 'install', 'tqdm'],
+        ['pip', 'install', '--upgrade', 'firebase-admin']
     ]
     
     args = {}

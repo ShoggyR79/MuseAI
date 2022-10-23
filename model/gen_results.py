@@ -1,4 +1,5 @@
 import sys
+import os
 from image_gen_utils import gen_image
 from music_gen_utils import gen_music
 import firebase_admin
@@ -42,19 +43,18 @@ def initialize_firebase() :
     return db, storage
 
 
-def generate(prompt : str, image_tags, music_tags, user_id : str, height : int, width : int, duration : float):
+def generate(pipeline, db, storage, pattern, prompt : str, image_tags, music_tags, user_id : str, height : int, width : int, duration : float):
     file_name = user_id + str(np.random.randint(0, np.power(2, 32)))
     image_prompt, music_prompt = _parse_args(prompt, image_tags, music_tags)
-    generated_image_name, nsfw = gen_image(file_name, image_prompt, height, width)
-    generated_audio_name = gen_music(file_name, music_prompt, duration)
+    generated_image_name, nsfw = gen_image(pipeline, file_name, image_prompt, height, width)
+    generated_audio_name = gen_music(pattern, file_name, music_prompt, duration)
     
     if not nsfw : 
         return {
             'id' : "JUNK",
             'nsfw' : True,
         }
-    
-    db, storage = initialize_firebase()
+
     storage.child(generated_image_name).put(generated_image_name)
     storage.child(generated_audio_name).put(generated_audio_name)
     
@@ -62,10 +62,10 @@ def generate(prompt : str, image_tags, music_tags, user_id : str, height : int, 
         u'img_id' : generated_image_name,
         u'audio_id' : generated_audio_name
     }
-    
+    os.remove(generated_image_name)
+    os.remove(generated_audio_name)
     times, ref = db.collection(u'media').add(media)
     return {
         'id' : ref.id,
         'nsfw' : False,
     }
-
