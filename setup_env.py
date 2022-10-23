@@ -37,10 +37,12 @@ if __name__ == '__main__':
         ['pip', 'install', 'sklearn'],
         ['pip', 'install', 'diffusers==0.2.4'],
         ['pip', 'install', 'Flask'],
-        ['pip', 'install', 'transformers'],
         ['pip', 'install', 'scipy'],
         ['pip', 'install', 'huggingface_hub'],
-        ['pip', 'install', 'tqdm']
+        ['pip', 'install', 'tqdm'],
+        ['pip', 'install', '--upgrade', 'firebase-admin'],
+        ['pip', 'install', '-U', 'deep-translator'],
+        ['pip', 'install', 'timm==0.4.12', 'fairscale==0.4.4']
     ]
     
     args = {}
