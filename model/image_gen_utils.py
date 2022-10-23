@@ -11,6 +11,8 @@ def get_pipeline(device : str = 'cuda:0', revision : str = "fp16", dtype = torch
     return pipeline
 
 def gen_image(pipeline, file_name : str, prompt : str, height : int = 512, width : int = 512, num_inference_steps : int = 50, device : str = 'cuda:0'):
+    print(width)
+    print(height)
     with autocast("cuda"): 
         generated_image = pipeline(prompt, height = height, width = width, num_inference_steps = num_inference_steps)
         
