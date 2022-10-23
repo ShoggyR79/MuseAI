@@ -17,7 +17,7 @@ const Login = () => {
     useEffect(() => {
 
         if (user != null) {
-            navigate('/home');
+            navigate('/');
             window.location.reload(false);
 
         }

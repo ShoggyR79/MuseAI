@@ -183,6 +183,7 @@ const Gallery = () => {
         return (
             <div className='gallery'>
                 {data.map((item, index) => {
+                    console.log('MAP',item)
                     return (
                         <div className='thumbnail' key={index} onClick={() => getImg(item)}>
                             <img src={item.img} style={{ width: '100%' }} />
@@ -294,21 +295,9 @@ const Gallery = () => {
                                 <div className='col-sm-4 justify-content-center'>
                                     <h5>{`${itemModal.views} Views`}</h5>
                                 </div>
-                                <div className='col-sm-4 justify-content-start'>
-                                    <h5>{`${itemModal.commentsLen} comments`}</h5>
-                                </div>
                             </div>
 
-                            <div className='row top-buffer' style={{ height: '33%', overflowY: 'scroll' }}>
-                                {itemModal.comments.map((item, index) => {
-                                    return (
-                                        <div className='row'>
-                                            <h5>{`${item.user}: ${item.text}`}</h5>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
+                            
 
 
 
