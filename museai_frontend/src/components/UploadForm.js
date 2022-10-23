@@ -8,6 +8,7 @@ import { FiSettings } from "react-icons/fi"
 import {GiSettingsKnobs} from "react-icons/gi"
 import { TagPicker } from 'rsuite';
 import Select from 'react-select';
+import axios from 'axios'
 
 const UploadForm = () => {
 
@@ -18,6 +19,8 @@ const UploadForm = () => {
     const [duration, setDuration] = useState(15)
     const [imgTags, setImgTags] = useState([])
     const [musTags, setMusTags] = useState([])
+    const [prompt, setPrompt] = useState('')
+    const [caption, setCaption] = useState('')
 
     const musicTags = ['neo-classic', 'funk', 'jazz', 'mystical', 'horror', 'idm', 'holidays', 'pop', 'hiphop', 'urban', 'fantasy', 'chill', 'dance', 'heavy bassline', 'melodic', 'nature', 'joyful', 'sorrow', 'futuristic', 'calm'].map(
         item => ({ label: item, value: item })
@@ -28,21 +31,40 @@ const UploadForm = () => {
     );
 
 
-    const submitHandler = () => {
-
-    }
+    
     const { user } = UserAuth()
+    const submitHandler = async (event) => {
+        event.preventDefault();
+        const body = {
+            height: height,
+            width: width,
+            duration: duration,
+            prompt: prompt,
+            caption: caption,
+            imgTags: imgTags.map((tag)=>{return tag.value}),
+            musicTags: musTags.map((tag)=>{return tag.value}),
+            userId: user.uid
+        }
+        console.log(body)
+        const res = await axios({
+            method: "post",
+            url: "http://129.59.9.156:5000/txt2muse",
+            data: body
+        });
+        console.log(res.data)
+    }
     const renderForm = () => {
         if (user != null) {
             return (<form className="col-5 form ">
                 <div className="form-group text-center">
                     <div>
-                        <textarea className="form-control mt-3" id="PromptTextArea" rows={5} defaultValue={""} placeholder="Enter a description for the image and/or music you want to be generated" />
+                        <textarea className="form-control mt-3" id="PromptTextArea" rows={5} defaultValue={""} placeholder="Enter a description for the image and/or music you want to be generated" onChange={(event)=>setPrompt(event.target.value)}/>
                     </div>
                     <div>
-                        <textarea className="form-control mt-3" id="CaptionTextArea" rows={2} defaultValue={""} placeholder="Enter a caption for your image" />
+                        <textarea className="form-control mt-3" id="CaptionTextArea" rows={2} defaultValue={""} placeholder="Enter a caption for your image" onChange={(event)=>setCaption(event.target.value)}/>
                     </div>
-                    <button type="submit" style={{ textAlign: "center", backgroundColor: "#191C76", color: "E3DFFF" }} class="btn btn-primary btn-lg col-12 mt-3">Submit</button>
+                    <button type="submit" style={{ textAlign: "center", backgroundColor: "#191C76", color: "E3DFFF" }} class="btn btn-primary btn-lg col-12 mt-3" onClick={submitHandler}>Submit</button>
+                    
                     {isSettings ?
                         <FiSettings size={30} style={{ color: 'white', marginTop: '10px', cursor: 'pointer',transition: 'all 350ms ease'}} onClick={() => setIsSettings(!isSettings)} />
                     :

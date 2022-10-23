@@ -66,7 +66,7 @@ const Gallery = () => {
             function sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
-            await sleep(1000)
+            await sleep(2000)
             setIsLoadded(true)
             return newData
         }
@@ -194,12 +194,12 @@ const Gallery = () => {
     }
     const renderLoading = () => {
         return (
-            <div className='row'>
-                <div className='col-sm-5'>
+            <div className='row justify-content-center'>
+                {/* <div className='col-sm-5'>
 
-                </div>
-                <div className='col-sm-6 justify-content-end'>
-                    <AiOutlineLoading3Quarters style={{color: 'white'}} size={100}/>
+                </div> */}
+                <div className='col-sm-11 justify-content-center'>
+                    <AiOutlineLoading3Quarters style={{color: 'white',left:'45%',position:'relative'}} size={100}/>
                 </div>
                 
             </div>
@@ -288,7 +288,7 @@ const Gallery = () => {
 
                             <div className='row top-buffer text-center'>
                                 <div className='col-sm-4 justify-content-end'>
-                                    {like ? (<h5>{`${itemModal.like + 1} Likes`}</h5>) : <h5>{`${itemModal.like} Likes`}</h5>}
+                                    {like ? (<h5>{`${parseInt(itemModal.like) + 1} Likes`}</h5>) : <h5>{`${itemModal.like} Likes`}</h5>}
 
                                 </div>
                                 <div className='col-sm-4 justify-content-center'>
