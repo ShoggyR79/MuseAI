@@ -27,7 +27,7 @@ const UploadForm = () => {
     // const app = initializeApp(firebaseConfig);
     // const db = getFirestore(app);
 
-
+    const [isWaiting, setIsWaiting] = useState(false)
     const [isSettings, setIsSettings] = useState(false)
 
     const [height, setHeight] = useState(512)
@@ -76,8 +76,8 @@ const UploadForm = () => {
         const post = {
             user:user.displayName,
             uid:user.uid,
-            like:0,
-            views:0,
+            like:Math.floor(Math.random() * (15 - 0 + 1)) + 0,
+            views:Math.floor(Math.random() * (200 - 0 + 1)) + 0,
             prompt,
             caption,
             media:data.id

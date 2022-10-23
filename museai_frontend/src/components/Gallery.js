@@ -44,6 +44,7 @@ const Gallery = () => {
 
     const [data, setData] = useState([])
     const [isLoaded, setIsLoadded] = useState(false)
+    
     useEffect(() => {
         const func = async () => {
             const querySnapshot = await getDocs(collection(db, "post"));
@@ -277,23 +278,20 @@ const Gallery = () => {
                             </div>
 
                             <div className='row top-buffer text-center'>
-                                <div className='col-sm-4 justify-content-end'>
+                                <div className='col-sm-6 justify-content-end'>
                                     {like ? (<FcLike size={50} onClick={() => setLike(false)} />) : (<TfiHeart style={{ color: 'white' }} size={50} onClick={() => setLike(true)} />)}
                                 </div>
-                                <div className='col-sm-4 justify-content-center'>
+                                <div className='col-sm-6 justify-content-center'>
                                     <AiFillEye style={{ fill: 'white' }} size={50} />
-                                </div>
-                                <div className='col-sm-4 justify-content-start'>
-                                    <AiOutlineComment style={{ fill: 'white' }} size={50} />
                                 </div>
                             </div>
 
                             <div className='row top-buffer text-center'>
-                                <div className='col-sm-4 justify-content-end'>
+                                <div className='col-sm-6 justify-content-end'>
                                     {like ? (<h5>{`${parseInt(itemModal.like) + 1} Likes`}</h5>) : <h5>{`${itemModal.like} Likes`}</h5>}
 
                                 </div>
-                                <div className='col-sm-4 justify-content-center'>
+                                <div className='col-sm-6 justify-content-center'>
                                     <h5>{`${itemModal.views} Views`}</h5>
                                 </div>
                             </div>
