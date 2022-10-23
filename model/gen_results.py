@@ -8,6 +8,7 @@ from firebase_admin import firestore
 import numpy as np
 from google.cloud import storage
 import pyrebase
+from deep_translator import GoogleTranslator
 
 
 def _parse_args(prompt, image_tags, music_tags):
@@ -42,8 +43,14 @@ def initialize_firebase() :
     storage = firebase.storage()
     return db, storage
 
+def get_prompt(prompt):
+    translated = GoogleTranslator(source='auto', target='en').translate(prompt)
+    return translated
+    
+
 
 def generate(pipeline, db, storage, pattern, prompt : str, image_tags, music_tags, user_id : str, height : int, width : int, duration : float):
+    prompt = get_prompt(prompt)
     file_name = user_id + str(np.random.randint(0, np.power(2, 32)))
     image_prompt, music_prompt = _parse_args(prompt, image_tags, music_tags)
     generated_image_name, nsfw = gen_image(pipeline, file_name, image_prompt, height, width)
@@ -60,7 +67,8 @@ def generate(pipeline, db, storage, pattern, prompt : str, image_tags, music_tag
     
     media = {
         u'img_id' : generated_image_name,
-        u'audio_id' : generated_audio_name
+        u'audio_id' : generated_audio_name,
+        u'prompt' : prompt 
     }
     os.remove(generated_image_name)
     os.remove(generated_audio_name)

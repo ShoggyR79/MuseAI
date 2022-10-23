@@ -1,6 +1,6 @@
 import requests
 
-d = {"prompt": "A magical town with tall crooked buildings, deformed tall buildings, slanted tall buildings, inspired by amsterdam and victorian england",
+d = {"prompt": "枯藤老树昏鸦，小桥流水人家",
      "imgTags": ["night time", "digital painting", "highly detailed", "concept art", "game art", "matte painting", "octane render", "8 k", "unreal engine"],
      "musicTags": ["magical", "fantasy", "beautiful", "relaxing"],
      "userId": "ABC123",
